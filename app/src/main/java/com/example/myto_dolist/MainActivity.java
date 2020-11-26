@@ -76,8 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
                 // Pass data being edited
                 i.putExtra(KEY_ITEM_TEXT, items.get(position));
-                i.putExtra(KEY_ITEM_POSITION, items.get(position));
+                i.putExtra(KEY_ITEM_POSITION, position);
 
+                Log.d("Main Activity", "Single click at position"+ position);
                 // Display the activity
                 // Use startActivityForResult cause expect a result which is updated to-do list item
                 // request code - uniquely identifies the request for an activity
@@ -184,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
     private void saveItems(){
         try {
             FileUtils.writeLines(getDataFile(), items);
+
         } catch (IOException e) {
             Log.e("MainActivity", "Error writing items", e);
         }
